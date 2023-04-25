@@ -2,18 +2,16 @@ import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
-  TouchableHighlight,
-  useColorScheme,
   View,
-  FlatList
+  FlatList,
+  
  
 } from 'react-native';
 import Video from 'react-native-video';
 import {  DocumentDirectoryPath, moveFile } from 'react-native-fs';
 
-const RegisterScreen = ({navigation, route}) => {
+const VideoScreen = ({navigation, route}) => {
   const url = route.params;
   const [videoPath, setVideoPath] = useState(null);
   const [files, setFiles] = useState([]);
@@ -26,7 +24,7 @@ const RegisterScreen = ({navigation, route}) => {
         .then((result) => {
           // console.log("result", result)
           setFiles(result);
-          console.log(file)
+          // console.log(file)
         })
         .catch((err) => {
           console.log(err.message, err.code);
@@ -52,7 +50,6 @@ const RegisterScreen = ({navigation, route}) => {
             )
           }}
         legacyImplementation={true}
-        // ListHeaderComponent = {renderHeader}
         extraData = {files}
         ItemSeparatorComponent = {seperator}
       />
@@ -64,7 +61,7 @@ const RegisterScreen = ({navigation, route}) => {
     </View>
   )
 }
-export default RegisterScreen;
+export default VideoScreen;
 
 
 const styles = StyleSheet.create({
@@ -113,9 +110,6 @@ video:{
 },
 displayVideo: {
   height: 30,
- 
 }
-
-
 });
 

@@ -28,7 +28,7 @@ const DisplayVideo = ({navigation, route}) => {
     const [duration, setDuration] = useState(0);
     
     const togglePlayBack = () => {
-      console.log("is", paused);
+      // console.log("is", paused);
 
       setPaused(!paused);  
       };

@@ -7,9 +7,6 @@ import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { v4 as uuidv4 } from 'uuid';
 
-
-// import { useCameraRecording } from 'react-native-vision-camera';
-
 function HomeScreen({navigation, route}) {
 const [isRecording, setIsRecording] = useState(false);
 const [recordedVideo, setRecordedVideo] = useState(null);
@@ -26,7 +23,6 @@ const [devicePosition, setDevicePosition] = useState('back');
 var devices = useCameraDevices();
 const device = devices ?.back;
 const camera = useRef(null);
-// console.log("device2", device)
 
 
 
@@ -70,19 +66,6 @@ useEffect(() => {
   };
   requestPermissions();
 }, []);
-
-const switchCamera = () => {
-
-  if (device.position == 'back') {
-    console.log(device.position)
-    device[position] = 'front'
-    console.log(device.position)
-
-  } else {
-    device[position] = 'back'
-
-  }
-};
 
 const startRecording = async() => {
   try{
@@ -137,7 +120,7 @@ const pauseVideo = async() => {
     await camera.current.pauseRecording();
     setIsPlaying(true);
     setElapsedTime(Date.now() - startTime);
-    console.log("pause", formatTime(elapsedTime))
+    // console.log("pause", formatTime(elapsedTime))
   } catch (error) {
     console.log('failed to pause recording!', error);
   }
@@ -148,7 +131,7 @@ const playVideo = async() => {
     await camera.current.resumeRecording();
     setIsPlaying(false);
     setStartTime(Date.now() - elapsedTime);
-    console.log("Play", formatTime(elapsedTime), formatTime(startTime))
+    // console.log("Play", formatTime(elapsedTime), formatTime(startTime))
   } catch (error) {
     console.log('failed to resume recording!', error);
   }
